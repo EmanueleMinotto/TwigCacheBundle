@@ -25,7 +25,12 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('service')
+                    ->cannotBeEmpty()
                     ->isRequired()
+                ->end()
+                ->scalarNode('strategy')
+                    ->cannotBeEmpty()
+                    ->defaultValue('twig_cache.strategy')
                 ->end()
             ->end();
 

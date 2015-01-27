@@ -5,6 +5,7 @@ namespace EmanueleMinotto\TwigCacheBundle\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
@@ -29,6 +30,7 @@ class TwigCacheExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $config);
 
+        $container->set('twig_cache.strategy', new Reference($config['strategy']));
         $container->setAlias('twig_cache.service', $config['service']);
 
         $loader = new Loader\XmlFileLoader(
