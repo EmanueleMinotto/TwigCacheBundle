@@ -1,0 +1,10 @@
+framework:
+  router:
+    resource: ruoting.yml
+  templating:
+    engines:
+    - twig
+  test: null
+
+parameters:
+  kernel.secret: ThisTokenIsNotSoSecretChangeIt
