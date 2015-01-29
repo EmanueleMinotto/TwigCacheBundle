@@ -8,3 +8,10 @@ framework:
 
 parameters:
   kernel.secret: ThisTokenIsNotSoSecretChangeIt
+
+services:
+  test_cache:
+    class: Doctrine\Common\Cache\ArrayCache
+
+twig_cache:
+  service: test_cache
