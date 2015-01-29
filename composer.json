@@ -11,6 +11,12 @@
         }
     },
     "description": "Symfony 2 Bundle for asm89/twig-cache-extension",
+    "keywords": [
+        "bundle",
+        "cache",
+        "symfony",
+        "twig"
+    ],
     "license": "MIT",
     "name": "emanueleminotto/twig-cache-bundle",
     "require": {
