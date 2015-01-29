@@ -44,7 +44,7 @@ Step 3: Configuration
 ---------------------
 
 ```yml
-# app/config.yml
+# app/config/config.yml
 twig_cache:
     service: cache_service # instance of Doctrine\Common\Cache\Cache
 ```
