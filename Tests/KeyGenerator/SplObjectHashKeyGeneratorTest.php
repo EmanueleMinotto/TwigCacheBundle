@@ -1,12 +1,12 @@
 <?php
 
-namespace EmanueleMinotto\TwigCacheBundle\Tests\Strategy;
+namespace EmanueleMinotto\TwigCacheBundle\Tests\KeyGenerator;
 
-use EmanueleMinotto\TwigCacheBundle\Strategy\SplObjectHashKeyGenerator;
+use EmanueleMinotto\TwigCacheBundle\KeyGenerator\SplObjectHashKeyGenerator;
 use PHPUnit_Framework_TestCase;
 
 /**
- * @coversDefaultClass \EmanueleMinotto\TwigCacheBundle\Strategy\SplObjectHashKeyGenerator
+ * @coversDefaultClass \EmanueleMinotto\TwigCacheBundle\KeyGenerator\SplObjectHashKeyGenerator
  */
 class SplObjectHashKeyGeneratorTest extends PHPUnit_Framework_TestCase
 {
