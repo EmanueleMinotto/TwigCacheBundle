@@ -3,7 +3,7 @@ Profiler
 
 Since v0.2 this bundle provide a Profiler.
 
-.. image:: http://s11.postimg.org/jkjnhlsfn/Schermata_2015_02_06_alle_04_31_55.png
+.. image:: http://c71.imgup.net/Schermata28236.png
 
 To enable it just set the configuration option (it's already enabled on development).
 
