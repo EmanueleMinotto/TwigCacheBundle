@@ -1,0 +1,93 @@
+{% extends app.request.isXmlHttpRequest
+    ? 'WebProfilerBundle:Profiler:ajax_layout.html.twig'
+    : 'WebProfilerBundle:Profiler:layout.html.twig'
+%}
+
+{% block toolbar %}
+    {% set icon %}
+        <img style="max-width:20px;max-height:28px;margin-top:4px;margin-bottom:4px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABuElEQVRYw8WXIUgDYRTHxxhjLIiIiGGYFgwGERGDcNttu7ttsrAxEDENg5hFTIIYDCImk9lkNiwZlkQMIoYFMRoWxCQior8HJxzHJuNuvnvwwoX7fv/3f9/7vrtYbMThOM7SqNccOvL5/GahUFiMBG6a5lwul7uPBI7tacMwHnHgIBIBVH6OgO9SqTSrDsf6NYEj4k4dXiwWs8DfRAD276jCq9VqkqpvBU5+WZaVURVAxacuXOzvqMLp++ov3LV/Sw1O3zNAex4Bn4zhpAq8VqslxG5v9TxfqVWP1YdeuCTt2FCBAzJlt/sFIOoYF/b/ytD3AyfcFLAXP3yYRMB1pVJJBoY3Go04i7SDwMku4idCVY/FuwHhPazPhu37soxZAPgH766E7fs4Cz0HqR74eii4BAfOAvZvD0r2RbcfXOWboFwujwF777PjL/4dLkGVrT7wDuOWUhEgs+0T8MSe0bkPAM34TsRXxk3vUwz793zjZqrBJbD/wTNuLVU4oznvGbcjVbhb/Ym74y+bzWZcFc6llHBvxBvbttPq1dNvS45m2jCtDpeg52fy/xcJvF6vp6g83O02IH4ADypEpyHW030AAAAASUVORK5CYII=" alt="Twig Cache">
+
+        {% set status = (
+            (collector.data.fetchBlock|length == 0
+                ? 'grey'
+                : (collector.data.hits == collector.data.fetchBlock|length)
+                    ? 'green'
+                    : (collector.data.hits >= (collector.data.fetchBlock|length - collector.data.hits)
+                        ? 'yellow'
+                        : 'red'
+                    )
+                )
+            )
+        %}
+        <span class="sf-toolbar-status sf-toolbar-status-{{ status }}">{{ collector.data.fetchBlock|length }}</span>
+    {% endset %}
+
+    {% set text %}
+        <div class="sf-toolbar-info-piece">
+            <b>Hits</b>
+            <span>{{ collector.data.hits|number_format }}</span>
+        </div>
+        <div class="sf-toolbar-info-piece">
+            <b>Miss</b>
+            <span>{{ (collector.data.fetchBlock|length - collector.data.hits)|number_format }}</span>
+        </div>
+    {% endset %}
+
+    {% include 'WebProfilerBundle:Profiler:toolbar_item.html.twig' with { 'link': profiler_url } %}
+{% endblock %}
+
+{% block menu %}
+<span class="label">
+    <span class="icon">
+        <img width="26" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABuElEQVRYw8WXIUgDYRTHxxhjLIiIiGGYFgwGERGDcNttu7ttsrAxEDENg5hFTIIYDCImk9lkNiwZlkQMIoYFMRoWxCQior8HJxzHJuNuvnvwwoX7fv/3f9/7vrtYbMThOM7SqNccOvL5/GahUFiMBG6a5lwul7uPBI7tacMwHnHgIBIBVH6OgO9SqTSrDsf6NYEj4k4dXiwWs8DfRAD276jCq9VqkqpvBU5+WZaVURVAxacuXOzvqMLp++ov3LV/Sw1O3zNAex4Bn4zhpAq8VqslxG5v9TxfqVWP1YdeuCTt2FCBAzJlt/sFIOoYF/b/ytD3AyfcFLAXP3yYRMB1pVJJBoY3Go04i7SDwMku4idCVY/FuwHhPazPhu37soxZAPgH766E7fs4Cz0HqR74eii4BAfOAvZvD0r2RbcfXOWboFwujwF777PjL/4dLkGVrT7wDuOWUhEgs+0T8MSe0bkPAM34TsRXxk3vUwz793zjZqrBJbD/wTNuLVU4oznvGbcjVbhb/Ym74y+bzWZcFc6llHBvxBvbttPq1dNvS45m2jCtDpeg52fy/xcJvF6vp6g83O02IH4ADypEpyHW030AAAAASUVORK5CYII=" alt="Twig Cache" />
+    </span>
+
+    <strong>Twig Cache</strong>
+
+    <span class="count">
+        <span>{{ collector.data.fetchBlock|length|number_format }}</span>
+    </span>
+</span>
+{% endblock %}
+
+{% block panel %}
+    <h2>Twig Cache Usage</h2>
+
+    <p>Strategy: <em>{{ collector.data.strategyClass|abbr_class }}</em></p>
+
+    <h3>Fetch</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Hit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in collector.data.fetchBlock %}
+                <tr>
+                    <td>{{ dump(item[0]) }}</td>
+                    <th style="background-color:#{{ item[1] ? '0e0' : 'e00' }}">{{ item[1] ? 'YES' : 'NO' }}</th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Key Generation</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Annotation</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in collector.data.generateKey %}
+                <tr>
+                    <td>{{ item.annotation }}</td>
+                    <td>{{ dump(item.value) }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

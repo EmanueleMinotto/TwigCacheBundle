@@ -70,6 +70,7 @@ Readings:
 
  * [Configuration Reference](https://github.com/EmanueleMinotto/TwigCacheBundle/tree/master/Resources/doc/configuration-reference.rst)
  * [Change caching strategy](https://github.com/EmanueleMinotto/TwigCacheBundle/tree/master/Resources/doc/strategies.rst)
+ * [Profiler](https://github.com/EmanueleMinotto/TwigCacheBundle/tree/master/Resources/doc/profiler.rst)
 
 License
 -------

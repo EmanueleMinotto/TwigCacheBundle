@@ -40,5 +40,17 @@ class TwigCacheExtension extends Extension
         $loader->load('services.xml');
 
         $container->getDefinition('twig_cache.extension')->replaceArgument(0, new Reference($config['strategy']));
+
+        if ($config['profiler']) {
+            $container->setParameter(
+                'twig_cache.extension.class',
+                'EmanueleMinotto\\TwigCacheBundle\\Twig\\ProfilerExtension'
+            );
+
+            $container->getDefinition('twig_cache.extension')->addTag('data_collector', array(
+                'id' => 'asm89_cache',
+                'template' => 'TwigCacheBundle:Collector:asm89_cache',
+            ));
+        }
     }
 }

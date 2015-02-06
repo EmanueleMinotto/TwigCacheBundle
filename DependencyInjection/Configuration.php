@@ -24,6 +24,9 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->booleanNode('profiler')
+                    ->defaultValue('%kernel.debug%')
+                ->end()
                 ->scalarNode('service')
                     ->cannotBeEmpty()
                     ->isRequired()
