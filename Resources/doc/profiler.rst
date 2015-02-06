@@ -3,7 +3,7 @@ Profiler
 
 Since v0.2 this bundle provide a Profiler.
 
-![Twig Cache Profiler](https://cloud.githubusercontent.com/assets/417201/6074183/3f22eef8-adb9-11e4-942a-8f45b1a4a195.png)
+![Twig Cache Profiler](http://s11.postimg.org/jkjnhlsfn/Schermata_2015_02_06_alle_04_31_55.png)
 
 To enable it just set the configuration option (it's already enabled on development).
 
