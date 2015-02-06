@@ -1,6 +1,6 @@
 <?php
 
-namespace EmanueleMinotto\TwigCacheBundle\Strategy;
+namespace EmanueleMinotto\TwigCacheBundle\KeyGenerator;
 
 use Asm89\Twig\CacheExtension\CacheStrategy\KeyGeneratorInterface;
 

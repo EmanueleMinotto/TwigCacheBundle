@@ -6,7 +6,7 @@
         <parameter key="twig_cache.strategy.class">Asm89\Twig\CacheExtension\CacheStrategy\IndexedChainingCacheStrategy</parameter>
         <parameter key="twig_cache.strategy.generational.class">Asm89\Twig\CacheExtension\CacheStrategy\GenerationalCacheStrategy</parameter>
         <parameter key="twig_cache.strategy.lifetime.class">Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy</parameter>
-        <parameter key="twig_cache.strategy.spl_object_hash_key_generator.class">EmanueleMinotto\TwigCacheBundle\Strategy\SplObjectHashKeyGenerator</parameter>
+        <parameter key="twig_cache.strategy.spl_object_hash_key_generator.class">EmanueleMinotto\TwigCacheBundle\KeyGenerator\SplObjectHashKeyGenerator</parameter>
     </parameters>
     <services>
         <service class="%twig_cache.strategy.class%" id="twig_cache.strategy" public="false">
@@ -23,11 +23,11 @@
             <tag name="twig.extension"/>
             <argument id="twig_cache.strategy" type="service"/>
         </service>
-        <service class="%twig_cache.strategy.generational.class%" id="twig_cache.strategy.generational" public="false">
+        <service class="%twig_cache.strategy.generational.class%" id="twig_cache.strategy.generational">
             <argument id="twig_cache.adapter" type="service"/>
             <argument id="twig_cache.strategy.spl_object_hash_key_generator" type="service"/>
         </service>
-        <service class="%twig_cache.strategy.lifetime.class%" id="twig_cache.strategy.lifetime" public="false">
+        <service class="%twig_cache.strategy.lifetime.class%" id="twig_cache.strategy.lifetime">
             <argument id="twig_cache.adapter" type="service"/>
         </service>
     </services>
