@@ -1,15 +1,5 @@
 {
-    "authors": [
-        {
-            "email": "minottoemanuele@gmail.com",
-            "name": "Emanuele Minotto"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "EmanueleMinotto\\TwigCacheBundle\\": "."
-        }
-    },
+    "name": "emanueleminotto/twig-cache-bundle",
     "description": "Symfony 2 Bundle for asm89/twig-cache-extension",
     "keywords": [
         "bundle",
@@ -18,7 +8,13 @@
         "twig"
     ],
     "license": "MIT",
-    "name": "emanueleminotto/twig-cache-bundle",
+    "authors": [
+        {
+            "name": "Emanuele Minotto",
+            "email": "minottoemanuele@gmail.com",
+            "homepage": "http://www.emanueleminotto.it"
+        }
+    ],
     "require": {
         "asm89/twig-cache-extension": "~1.0"
     },
@@ -27,5 +23,10 @@
         "phpunit/phpunit": "~4.4",
         "symfony/framework-bundle": "~2.6",
         "symfony/twig-bundle": "~2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "EmanueleMinotto\\TwigCacheBundle\\": "."
+        }
     }
 }
