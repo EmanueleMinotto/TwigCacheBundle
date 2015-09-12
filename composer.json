@@ -11,8 +11,7 @@
     "authors": [
         {
             "name": "Emanuele Minotto",
-            "email": "minottoemanuele@gmail.com",
-            "homepage": "http://www.emanueleminotto.it"
+            "email": "minottoemanuele@gmail.com"
         }
     ],
     "require": {
