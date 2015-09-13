@@ -37,6 +37,7 @@ class TwigCacheExtensionTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($container->has('twig_cache.service'));
         $this->assertInstanceOf('Doctrine\\Common\\Cache\\Cache', $container->get('twig_cache.service'));
     }
+
     /**
      * @covers ::load
      */

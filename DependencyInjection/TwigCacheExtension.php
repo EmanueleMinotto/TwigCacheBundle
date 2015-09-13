@@ -47,10 +47,10 @@ class TwigCacheExtension extends Extension
                 'EmanueleMinotto\\TwigCacheBundle\\Twig\\ProfilerExtension'
             );
 
-            $container->getDefinition('twig_cache.extension')->addTag('data_collector', array(
-                'id' => 'asm89_cache',
+            $container->getDefinition('twig_cache.extension')->addTag('data_collector', [
+                'id'       => 'asm89_cache',
                 'template' => 'TwigCacheBundle:Collector:asm89_cache',
-            ));
+            ]);
         }
     }
 }
