@@ -20,19 +20,19 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
      *
      * @var array
      */
-    private $fetchBlock = array();
+    private $fetchBlock = [];
 
     /**
      * Data about generateKey requests.
      *
      * @var array
      */
-    private $generateKey = array();
+    private $generateKey = [];
 
     /**
      * Cache hits.
      *
-     * @var integer
+     * @var int
      */
     private $hits = 0;
 
@@ -68,12 +68,12 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
     /**
      * Store a fetch request.
      *
-     * @param mixed   $key
-     * @param boolean $output
+     * @param mixed $key
+     * @param bool  $output
      */
     public function addFetchBlock($key, $output)
     {
-        $this->fetchBlock[] = array($key, $output);
+        $this->fetchBlock[] = [$key, $output];
 
         if ($output) {
             ++$this->hits;
@@ -88,10 +88,10 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
      */
     public function addGenerateKey($annotation, $value)
     {
-        $this->generateKey[] = array(
+        $this->generateKey[] = [
             'annotation' => $annotation,
-            'value' => $value,
-        );
+            'value'      => $value,
+        ];
     }
 
     /**
@@ -101,11 +101,11 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
      */
     public function getData()
     {
-        return array(
-            'fetchBlock' => $this->fetchBlock,
-            'generateKey' => $this->generateKey,
-            'hits' => $this->hits,
+        return [
+            'fetchBlock'    => $this->fetchBlock,
+            'generateKey'   => $this->generateKey,
+            'hits'          => $this->hits,
             'strategyClass' => $this->strategyClass,
-        );
+        ];
     }
 }

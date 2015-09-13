@@ -48,17 +48,17 @@ class SplObjectHashKeyGeneratorTest extends PHPUnit_Framework_TestCase
      */
     public function valueProvider()
     {
-        return array(
-            array(new \stdClass()),
-            array(array()),
-            array('foo'),
-            array('bar'),
-            array(5),
-            array(89),
-            array(5.7),
-            array(9.3),
-            array(true),
-            array(false),
-        );
+        return [
+            [new \stdClass()],
+            [[]],
+            ['foo'],
+            ['bar'],
+            [5],
+            [89],
+            [5.7],
+            [9.3],
+            [true],
+            [false],
+        ];
     }
 }
