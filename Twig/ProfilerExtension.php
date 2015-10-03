@@ -118,7 +118,7 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
      */
     public function serialize()
     {
-        return $this->getData();
+        return serialize( $this->getData() );
     }
 
     /**
