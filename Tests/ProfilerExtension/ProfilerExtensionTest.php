@@ -40,7 +40,7 @@ class ProfilerExtensionTest extends PHPUnit_Framework_TestCase
 
         $data = $extension->getData();
 
-        $serializedData = serialize( $extension );
+        $serializedData = serialize($extension);
 
         /** @var ProfilerExtension $unserialized */
         $unserialized = unserialize($serializedData);
@@ -50,5 +50,4 @@ class ProfilerExtensionTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($data, $dataUnserialized);
     }
-
 }
