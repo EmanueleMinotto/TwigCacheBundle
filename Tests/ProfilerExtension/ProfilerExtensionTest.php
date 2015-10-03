@@ -26,7 +26,8 @@ class ProfilerExtensionTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::load
+     * @covers ::serialize
+     * @covers ::unserialize
      */
     public function testSerialization()
     {
