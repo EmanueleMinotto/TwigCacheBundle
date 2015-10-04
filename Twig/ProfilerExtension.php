@@ -114,7 +114,9 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
      * String representation of object.
      *
      * @link http://php.net/manual/en/serializable.serialize.php
+     *
      * @return string the string representation of the object or null
+     *
      * @since 5.1.0
      */
     public function serialize()
@@ -128,7 +130,9 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
      * @link http://php.net/manual/en/serializable.unserialize.php
      *
      * @param string $serialized
+     *
      * @return void
+     *
      * @since 5.1.0
      */
     public function unserialize($serialized)
