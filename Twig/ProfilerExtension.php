@@ -91,7 +91,7 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
     {
         $this->generateKey[] = [
             'annotation' => $annotation,
-            'value' => $value,
+            'value'      => $value,
         ];
     }
 
@@ -103,9 +103,9 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
     public function getData()
     {
         return [
-            'fetchBlock' => $this->fetchBlock,
-            'generateKey' => $this->generateKey,
-            'hits' => $this->hits,
+            'fetchBlock'    => $this->fetchBlock,
+            'generateKey'   => $this->generateKey,
+            'hits'          => $this->hits,
             'strategyClass' => $this->strategyClass,
         ];
     }
