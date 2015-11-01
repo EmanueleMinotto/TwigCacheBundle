@@ -69,8 +69,8 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
     /**
      * Store a fetch request.
      *
-     * @param mixed $key
-     * @param bool  $output
+     * @param mixed  $key
+     * @param string $output
      */
     public function addFetchBlock($key, $output)
     {
