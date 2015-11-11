@@ -1,25 +1,38 @@
 language: php
 
+sudo: false
+
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
+
 php:
-- 5.4
-- 5.5
-- 5.6
-- 7.0
-- hhvm
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7.0
+  - hhvm
 
 env:
   global:
     secure: UVvBxNf6tsDjCT6NFADBEpSH2Oeh5ikTh+RugVuW+gMhnF6cnapSO9YJE5RpVu8RjIPZInDiEyrFjufHvbLEdr/Zj9AMHJruDpKjxkIV9dnOre6z3pAF15DPTp5prD6xaJVyHHkLiFufR2E3QTVFSiwJNC9/LAmE8D5CIa6+RSs=
 
-before_script:
-- composer require satooshi/php-coveralls:~0.6 --dev
+before_install:
+  - 'if [[ $TRAVIS_PHP_VERSION != "hhvm" && $TRAVIS_PHP_VERSION != "7.0" ]]; then phpenv config-rm xdebug.ini; fi;'
+  - composer self-update
+  - 'if [[ -n "$GH_TOKEN" ]]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;'
+
+install:
+  - composer require satooshi/php-coveralls:~0.6 --no-update
+  - composer install --prefer-dist --no-interaction --no-progress
 
 script:
-- vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 after_script:
-- php vendor/bin/coveralls -v
-- if [ $TRAVIS_PHP_VERSION = '5.6' ]; then sh generate-api.sh; fi
+  - php vendor/bin/coveralls -v
+  - 'if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" && $TRAVIS_PHP_VERSION == "5.6" ]]; then sh generate-api.sh; fi;'
 
 notifications:
   email: false
