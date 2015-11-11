@@ -15,13 +15,13 @@
         }
     ],
     "require": {
-        "asm89/twig-cache-extension": "~1.0"
+        "asm89/twig-cache-extension": "^1.0"
     },
     "require-dev": {
-        "doctrine/cache": "~1.4",
-        "phpunit/phpunit": "~4.4",
-        "symfony/framework-bundle": "~2.6",
-        "symfony/twig-bundle": "~2.6"
+        "doctrine/cache": "^1.4",
+        "phpunit/phpunit": "^4.4|^5.0",
+        "symfony/framework-bundle": "^2.6|^3.0",
+        "symfony/twig-bundle": "^2.6|^3.0"
     },
     "autoload": {
         "psr-4": {
