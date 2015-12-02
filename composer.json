@@ -24,6 +24,9 @@
         "symfony/twig-bundle": "^2.6|^3.0"
     },
     "autoload": {
+        "exclude-from-classmap": [
+            "/Tests/"
+        ],
         "psr-4": {
             "EmanueleMinotto\\TwigCacheBundle\\": "."
         }
