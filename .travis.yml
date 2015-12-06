@@ -24,7 +24,7 @@ before_install:
   - 'if [[ -n "$GH_TOKEN" ]]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;'
 
 install:
-  - composer require satooshi/php-coveralls:~0.6 --no-update
+  - composer require satooshi/php-coveralls:~0.6@stable --no-update
   - composer install --prefer-dist --no-interaction --no-progress
 
 script:
