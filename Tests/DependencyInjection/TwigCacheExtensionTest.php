@@ -2,54 +2,58 @@
 
 namespace EmanueleMinotto\TwigCacheBundle\Tests\DependencyInjection;
 
-use EmanueleMinotto\TwigCacheBundle\Tests\AppKernel;
-use PHPUnit_Framework_TestCase;
+use EmanueleMinotto\TwigCacheBundle\DependencyInjection\TwigCacheExtension;
+use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
+use Symfony\Component\DependencyInjection\Definition;
 
-/**
- * @coversDefaultClass \EmanueleMinotto\TwigCacheBundle\DependencyInjection\TwigCacheExtension
- */
-class TwigCacheExtensionTest extends PHPUnit_Framework_TestCase
+class TwigCacheExtensionTest extends AbstractExtensionTestCase
 {
     /**
-     * @var \Symfony\Component\HttpKernel\Kernel
+     * Return an array of container extensions you need to be registered for each test (usually just the container
+     * extension you are testing.
+     *
+     * @return ExtensionInterface[]
      */
-    private $kernel;
+    protected function getContainerExtensions()
+    {
+        return [
+            new TwigCacheExtension(),
+        ];
+    }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp()
     {
-        $this->kernel = new AppKernel('TwigCacheExtensionTest', true);
-        $this->kernel->boot();
+        parent::setUp();
+
+        $serviceId = sha1(rand());
+
+        $this->setDefinition($serviceId, new Definition(
+            'Doctrine\Common\Cache\ArrayCache'
+        ));
+        $this->load([
+            'service' => $serviceId,
+        ]);
     }
 
     /**
-     * @covers ::load
+     * Test services.
      */
     public function testService()
     {
-        $container = $this->kernel->getContainer();
-
-        $this->assertTrue($container->has('twig_cache.extension'));
-        $this->assertInstanceOf('Twig_Extension', $container->get('twig_cache.extension'));
-
-        $this->assertTrue($container->has('twig_cache.service'));
-        $this->assertInstanceOf('Doctrine\\Common\\Cache\\Cache', $container->get('twig_cache.service'));
+        $this->assertContainerBuilderHasService('twig_cache.extension');
+        $this->assertContainerBuilderHasService('twig_cache.service');
     }
 
     /**
-     * @covers ::load
+     * Test parameters.
      */
     public function testParameter()
     {
-        $container = $this->kernel->getContainer();
-
-        $this->assertTrue($container->hasParameter('twig_cache.adapter.class'));
-        $this->assertTrue($container->hasParameter('twig_cache.extension.class'));
-        $this->assertTrue($container->hasParameter('twig_cache.strategy.class'));
-        $this->assertTrue($container->hasParameter('twig_cache.strategy.generational.class'));
-        $this->assertTrue($container->hasParameter('twig_cache.strategy.lifetime.class'));
-        $this->assertTrue($container->hasParameter('twig_cache.strategy.spl_object_hash_key_generator.class'));
+        $this->assertContainerBuilderHasParameter('twig_cache.adapter.class');
+        $this->assertContainerBuilderHasParameter('twig_cache.extension.class');
+        $this->assertContainerBuilderHasParameter('twig_cache.strategy.class');
+        $this->assertContainerBuilderHasParameter('twig_cache.strategy.generational.class');
+        $this->assertContainerBuilderHasParameter('twig_cache.strategy.lifetime.class');
+        $this->assertContainerBuilderHasParameter('twig_cache.strategy.spl_object_hash_key_generator.class');
     }
 }
