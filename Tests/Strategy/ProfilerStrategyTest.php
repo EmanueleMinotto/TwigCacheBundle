@@ -2,8 +2,8 @@
 
 namespace EmanueleMinotto\TwigCacheBundle\Tests\Strategy;
 
-use PHPUnit_Framework_TestCase;
 use EmanueleMinotto\TwigCacheBundle\Strategy\ProfilerStrategy;
+use PHPUnit_Framework_TestCase;
 
 class ProfilerStrategyTest extends PHPUnit_Framework_TestCase
 {
@@ -32,8 +32,7 @@ class ProfilerStrategyTest extends PHPUnit_Framework_TestCase
         $this->profilerExtension = $this
             ->getMockBuilder('EmanueleMinotto\TwigCacheBundle\Twig\ProfilerExtension')
             ->disableOriginalConstructor()
-            ->getMock()
-        ;
+            ->getMock();
 
         $this->object = new ProfilerStrategy(
             $this->cacheStrategy,
@@ -52,16 +51,14 @@ class ProfilerStrategyTest extends PHPUnit_Framework_TestCase
                 $this->assertSame($key, $a);
 
                 return $output;
-            }))
-        ;
+            }));
 
         $this->profilerExtension
             ->method('addFetchBlock')
             ->will($this->returnCallback(function ($a, $b) use ($key, $output) {
                 $this->assertSame($key, $a);
                 $this->assertSame($output, $b);
-            }))
-        ;
+            }));
 
         $this->object->fetchBlock($key);
     }
@@ -76,16 +73,14 @@ class ProfilerStrategyTest extends PHPUnit_Framework_TestCase
             ->will($this->returnCallback(function ($a, $b) use ($annotation, $value) {
                 $this->assertSame($annotation, $a);
                 $this->assertSame($value, $b);
-            }))
-        ;
+            }));
 
         $this->cacheStrategy
             ->method('generateKey')
             ->will($this->returnCallback(function ($a, $b) use ($annotation, $value) {
                 $this->assertSame($annotation, $a);
                 $this->assertSame($value, $b);
-            }))
-        ;
+            }));
 
         $this->object->generateKey($annotation, $value);
     }
@@ -100,8 +95,7 @@ class ProfilerStrategyTest extends PHPUnit_Framework_TestCase
             ->will($this->returnCallback(function ($a, $b) use ($key, $block) {
                 $this->assertSame($key, $a);
                 $this->assertSame($block, $b);
-            }))
-        ;
+            }));
 
         $this->object->saveBlock($key, $block);
     }
