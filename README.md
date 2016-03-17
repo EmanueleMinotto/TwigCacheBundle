@@ -7,7 +7,7 @@ Twig cache extension Bundle
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/EmanueleMinotto/TwigCacheBundle.svg?style=flat)](https://scrutinizer-ci.com/g/EmanueleMinotto/TwigCacheBundle/)
 [![Total Downloads](https://img.shields.io/packagist/dt/emanueleminotto/twig-cache-bundle.svg?style=flat)](https://packagist.org/packages/emanueleminotto/twig-cache-bundle)
 
-Symfony 2 Bundle for [asm89/twig-cache-extension](https://github.com/asm89/twig-cache-extension).
+Symfony Bundle for [asm89/twig-cache-extension](https://github.com/asm89/twig-cache-extension).
 
 API: [emanueleminotto.github.io/TwigCacheBundle](http://emanueleminotto.github.io/TwigCacheBundle/)
 
