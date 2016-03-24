@@ -25,7 +25,7 @@
         </service>
         <service class="%twig_cache.strategy.generational.class%" id="twig_cache.strategy.generational">
             <argument id="twig_cache.adapter" type="service"/>
-            <argument id="twig_cache.strategy.spl_object_hash_key_generator" type="service"/>
+            <argument id="twig_cache.strategy.key_generator" type="service"/>
         </service>
         <service class="%twig_cache.strategy.lifetime.class%" id="twig_cache.strategy.lifetime">
             <argument id="twig_cache.adapter" type="service"/>
