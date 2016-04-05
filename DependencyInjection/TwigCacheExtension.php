@@ -31,6 +31,7 @@ class TwigCacheExtension extends Extension
         $config = $this->processConfiguration($configuration, $config);
 
         $container->setAlias('twig_cache.service', $config['service']);
+        $container->setAlias('twig_cache.strategy.key_generator', $config['key_generator']);
 
         $loader = new Loader\XmlFileLoader(
             $container,

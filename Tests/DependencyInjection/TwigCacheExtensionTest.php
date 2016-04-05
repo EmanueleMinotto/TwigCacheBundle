@@ -42,6 +42,7 @@ class TwigCacheExtensionTest extends AbstractExtensionTestCase
     {
         $this->assertContainerBuilderHasService('twig_cache.extension');
         $this->assertContainerBuilderHasService('twig_cache.service');
+        $this->assertContainerBuilderHasService('twig_cache.strategy.key_generator');
     }
 
     /**

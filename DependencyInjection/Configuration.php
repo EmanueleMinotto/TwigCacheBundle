@@ -35,6 +35,11 @@ class Configuration implements ConfigurationInterface
                     ->cannotBeEmpty()
                     ->defaultValue('twig_cache.strategy')
                 ->end()
+                ->scalarNode('key_generator')
+                    ->cannotBeEmpty()
+                    ->defaultValue('twig_cache.strategy.spl_object_hash_key_generator')
+                    ->info('service id that implements KeyGeneratorInterface to generate a key for template cache')
+                ->end()
             ->end();
 
         return $treeBuilder;
