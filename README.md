@@ -56,6 +56,27 @@ Step 3: Configuration
 twig_cache:
     service: cache_service # instance of Doctrine\Common\Cache\Cache
 ```
+Another option is to configure one of the PSR-6 Cache pool implementations 
+by changing the default adapter class to the `PsrCacheAdapter`. 
+```yml
+# parameters.yml
+twig_cache.adapter.class: Asm89\Twig\CacheExtension\CacheProvider\PsrCacheAdapter
+```
+After that any cache pool that implements the `CacheItemPoolInterface` is 
+supported. The [`CacheBundle`](https://github.com/php-cache/cache-bundle) will
+allow you to configure the cache pool of your choice. List of predefined pools 
+can be found at: [http://php-cache.readthedocs.io/](http://php-cache.readthedocs.io/)
+
+```yml
+# config.yml
+cache_adapter:
+    providers:
+        twig_apcu:
+            factory: 'cache.factory.apcu'
+
+twig_cache:
+    service: cache.provider.twig_apcu
+```
 
 Usage
 -----
