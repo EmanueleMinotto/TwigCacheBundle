@@ -11,8 +11,8 @@ Symfony Bundle for [asm89/twig-cache-extension](https://github.com/asm89/twig-ca
 
 API: [emanueleminotto.github.io/TwigCacheBundle](http://emanueleminotto.github.io/TwigCacheBundle/)
 
-Step 1: Download the Bundle
----------------------------
+Install bundle using Composer
+-----------------------------
 
 Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
@@ -25,8 +25,8 @@ This command requires you to have [Composer](https://getcomposer.org/) installed
 in the [installation chapter](https://getcomposer.org/doc/00-intro.md)
 of the Composer documentation.
 
-Step 2: Enable the Bundle
--------------------------
+Add Bundle to AppKernel
+-----------------------
 
 Then, enable the bundle by adding the following line in the `app/AppKernel.php`
 file of your project:
@@ -48,19 +48,49 @@ class AppKernel extends Kernel
 }
 ```
 
-Step 3: Configuration
----------------------
+Configure services
+------------------
+
+This bundle allows to easily configure the caching service the extension will use for the caching. The extension 
+by default supports instances of `Doctrine\Common\Cache\Cache` but allows you to use packages that 
+provide a `psr/cache-implementation`.
 
 ```yml
 # app/config/config.yml
 twig_cache:
-    service: cache_service # instance of Doctrine\Common\Cache\Cache
+    service: cache_service # instance of Doctrine\Common\Cache\Cache or Psr\Cache\CacheItemPoolInterface
+```
+
+Configuring a PSR-6 Cache pool implementation is possible by changing the extension's default adapter class 
+to the `PsrCacheAdapter` that is provided with the extension.
+
+```yml
+# parameters.yml
+twig_cache.adapter.class: Asm89\Twig\CacheExtension\CacheProvider\PsrCacheAdapter
+```
+
+After that, you should install a package that provides a `psr/cache-implementation`. A wide
+variety of implementations already can be found at: [http://php-cache.readthedocs.io/](http://php-cache.readthedocs.io/)
+After installing an adapter with composer, it can be configured to do the caching for this bundle. 
+The [`CacheBundle`](https://github.com/php-cache/cache-bundle) allows easy configuration by creating a Symfony
+service for the cache pool adapter.
+
+```yml
+# config.yml
+cache_adapter:
+    providers:
+        twig_apcu:
+            factory: 'cache.factory.apcu'
+
+twig_cache:
+    service: cache.provider.twig_apcu
 ```
 
 Usage
 -----
 
-The default strategy is the `IndexedChainingCacheStrategy` so you can use directly this code in your [Twig](http://twig.sensiolabs.org/) templates.
+The default strategy is the `IndexedChainingCacheStrategy` so you can use directly this code in your 
+[Twig](http://twig.sensiolabs.org/) templates.
 
 ```twig
 {# delegate to lifetime strategy #}
