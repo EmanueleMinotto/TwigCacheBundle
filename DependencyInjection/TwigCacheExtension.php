@@ -40,6 +40,7 @@ class TwigCacheExtension extends Extension
 
         $loader->load('services.xml');
 
+        $container->getDefinition('twig_cache.extension.parent')->replaceArgument(0, new Reference($config['strategy']));
         $container->getDefinition('twig_cache.extension')->replaceArgument(0, new Reference($config['strategy']));
 
         if ($config['profiler']) {
