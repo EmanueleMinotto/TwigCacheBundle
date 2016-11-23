@@ -32,6 +32,10 @@
             "EmanueleMinotto\\TwigCacheBundle\\": "."
         }
     },
+    "suggest": {
+        "cache/adapter-bundle": "To make use of PSR-6 cache implementation via PsrCacheAdapter.",
+        "cache/cache-bundle": "To easily be able to configure adapters in your Symfony application.",
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
