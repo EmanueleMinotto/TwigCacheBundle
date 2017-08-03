@@ -2,6 +2,7 @@
 
 namespace EmanueleMinotto\TwigCacheBundle\Tests\KeyGenerator;
 
+use Asm89\Twig\CacheExtension\CacheStrategy\KeyGeneratorInterface;
 use EmanueleMinotto\TwigCacheBundle\KeyGenerator\SplObjectHashKeyGenerator;
 use PHPUnit_Framework_TestCase;
 use stdClass;
@@ -12,10 +13,7 @@ class SplObjectHashKeyGeneratorTest extends PHPUnit_Framework_TestCase
     {
         $generator = new SplObjectHashKeyGenerator();
 
-        $this->assertInstanceOf(
-            'Asm89\Twig\CacheExtension\CacheStrategy\KeyGeneratorInterface',
-            $generator
-        );
+        $this->assertInstanceOf(KeyGeneratorInterface::class, $generator);
 
         $result = $generator->generateKey('foo');
         $this->assertSame(sha1(serialize('foo')), $result);

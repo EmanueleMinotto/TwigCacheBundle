@@ -2,7 +2,9 @@
 
 namespace EmanueleMinotto\TwigCacheBundle\Tests\Strategy;
 
+use Asm89\Twig\CacheExtension\CacheStrategyInterface;
 use EmanueleMinotto\TwigCacheBundle\Strategy\ProfilerStrategy;
+use EmanueleMinotto\TwigCacheBundle\Twig\ProfilerExtension;
 use PHPUnit_Framework_TestCase;
 
 class ProfilerStrategyTest extends PHPUnit_Framework_TestCase
@@ -13,12 +15,12 @@ class ProfilerStrategyTest extends PHPUnit_Framework_TestCase
     protected $object;
 
     /**
-     * @var \Asm89\Twig\CacheExtension\CacheStrategyInterface
+     * @var CacheStrategyInterface
      */
     private $cacheStrategy;
 
     /**
-     * @var \EmanueleMinotto\TwigCacheBundle\Twig\ProfilerExtension
+     * @var ProfilerExtension
      */
     private $profilerExtension;
 
@@ -27,10 +29,13 @@ class ProfilerStrategyTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->cacheStrategy = $this->getMock('Asm89\Twig\CacheExtension\CacheStrategyInterface');
+        $this->cacheStrategy = $this
+            ->getMockBuilder(CacheStrategyInterface::class)
+            ->disableOriginalConstructor()
+            ->getMock();
 
         $this->profilerExtension = $this
-            ->getMockBuilder('EmanueleMinotto\TwigCacheBundle\Twig\ProfilerExtension')
+            ->getMockBuilder(ProfilerExtension::class)
             ->disableOriginalConstructor()
             ->getMock();
 

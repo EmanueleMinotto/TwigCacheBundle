@@ -2,6 +2,7 @@
 
 namespace EmanueleMinotto\TwigCacheBundle\DependencyInjection;
 
+use EmanueleMinotto\TwigCacheBundle\Twig\ProfilerExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
@@ -44,10 +45,7 @@ class TwigCacheExtension extends Extension
         $container->getDefinition('twig_cache.extension')->replaceArgument(0, new Reference($config['strategy']));
 
         if ($config['profiler']) {
-            $container->setParameter(
-                'twig_cache.extension.class',
-                'EmanueleMinotto\\TwigCacheBundle\\Twig\\ProfilerExtension'
-            );
+            $container->setParameter('twig_cache.extension.class', ProfilerExtension::class);
 
             $container->getDefinition('twig_cache.extension')->addTag('data_collector', [
                 'id'       => 'asm89_cache',

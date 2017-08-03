@@ -2,6 +2,7 @@
 
 namespace EmanueleMinotto\TwigCacheBundle\Tests\DependencyInjection;
 
+use Doctrine\Common\Cache\ArrayCache;
 use EmanueleMinotto\TwigCacheBundle\DependencyInjection\TwigCacheExtension;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
 use Symfony\Component\DependencyInjection\Definition;
@@ -27,9 +28,7 @@ class TwigCacheExtensionTest extends AbstractExtensionTestCase
 
         $serviceId = sha1(rand());
 
-        $this->setDefinition($serviceId, new Definition(
-            'Doctrine\Common\Cache\ArrayCache'
-        ));
+        $this->setDefinition($serviceId, new Definition(ArrayCache::class));
         $this->load([
             'service' => $serviceId,
         ]);
