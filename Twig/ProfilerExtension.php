@@ -140,4 +140,14 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
             $this->strategyClass = $data['strategyClass'];
         }
     }
+
+    /**
+     * Reset profiler data
+     */
+    public function reset()
+    {
+        $this->fetchBlock = [];
+        $this->generateKey = [];
+        $this->hits = 0;
+    }
 }
