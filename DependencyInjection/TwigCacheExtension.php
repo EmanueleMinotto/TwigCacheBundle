@@ -2,9 +2,11 @@
 
 namespace EmanueleMinotto\TwigCacheBundle\DependencyInjection;
 
-use EmanueleMinotto\TwigCacheBundle\Twig\ProfilerExtension;
+use EmanueleMinotto\TwigCacheBundle\DataCollector\TwigCacheCollector;
+use EmanueleMinotto\TwigCacheBundle\Strategy\ProfilerStrategy;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -39,16 +41,24 @@ class TwigCacheExtension extends Extension
 
         $loader->load('services.xml');
 
-        $container->getDefinition('twig_cache.extension.parent')->replaceArgument(0, new Reference($config['strategy']));
-        $container->getDefinition('twig_cache.extension')->replaceArgument(0, new Reference($config['strategy']));
+        $strategy = new Reference($config['strategy']);
 
         if ($config['profiler']) {
-            $container->setParameter('twig_cache.extension.class', ProfilerExtension::class);
-
-            $container->getDefinition('twig_cache.extension')->addTag('data_collector', [
+            $dataCollectorDefinition = new Definition(TwigCacheCollector::class);
+            $dataCollectorDefinition->addTag('data_collector', [
                 'id' => 'asm89_cache',
                 'template' => 'TwigCacheBundle:Collector:asm89_cache',
             ]);
+            $container->setDefinition(TwigCacheCollector::class, $dataCollectorDefinition);
+
+            $strategy = new Definition(ProfilerStrategy::class, [
+                new Reference($config['strategy']),
+                new Reference(TwigCacheCollector::class),
+            ]);
+
+            $container->addDefinitions([$strategy]);
         }
+
+        $container->getDefinition('twig_cache.extension')->replaceArgument(0, $strategy);
     }
 }

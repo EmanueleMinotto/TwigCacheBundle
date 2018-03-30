@@ -3,7 +3,7 @@
 namespace EmanueleMinotto\TwigCacheBundle\Strategy;
 
 use Asm89\Twig\CacheExtension\CacheStrategyInterface;
-use EmanueleMinotto\TwigCacheBundle\Twig\ProfilerExtension;
+use EmanueleMinotto\TwigCacheBundle\DataCollector\TwigCacheCollector;
 
 /**
  * Wrapper used to profile cache usage.
@@ -11,23 +11,25 @@ use EmanueleMinotto\TwigCacheBundle\Twig\ProfilerExtension;
 class ProfilerStrategy implements CacheStrategyInterface
 {
     /**
-     * @var ProfilerExtension
-     */
-    private $profilerExtension;
-
-    /**
      * @var CacheStrategyInterface
      */
     private $cacheStrategy;
 
     /**
-     * @param CacheStrategyInterface $cacheStrategy
-     * @param ProfilerExtension      $profilerExtension
+     * @var TwigCacheCollector
      */
-    public function __construct(CacheStrategyInterface $cacheStrategy, ProfilerExtension $profilerExtension)
+    private $dataCollector;
+
+    /**
+     * @param CacheStrategyInterface $cacheStrategy
+     * @param TwigCacheCollector     $dataCollector
+     */
+    public function __construct(CacheStrategyInterface $cacheStrategy, TwigCacheCollector $dataCollector)
     {
         $this->cacheStrategy = $cacheStrategy;
-        $this->profilerExtension = $profilerExtension;
+        $this->dataCollector = $dataCollector;
+
+        $dataCollector->setStrategyClass(get_class($cacheStrategy));
     }
 
     /**
@@ -40,7 +42,7 @@ class ProfilerStrategy implements CacheStrategyInterface
     public function fetchBlock($key)
     {
         $output = $this->cacheStrategy->fetchBlock($key);
-        $this->profilerExtension->addFetchBlock($key, $output);
+        $this->dataCollector->addFetchBlock($key, $output);
 
         return $output;
     }
@@ -55,7 +57,7 @@ class ProfilerStrategy implements CacheStrategyInterface
      */
     public function generateKey($annotation, $value)
     {
-        $this->profilerExtension->addGenerateKey($annotation, $value);
+        $this->dataCollector->addGenerateKey($annotation, $value);
 
         return $this->cacheStrategy->generateKey($annotation, $value);
     }

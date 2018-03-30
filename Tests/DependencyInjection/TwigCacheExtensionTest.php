@@ -6,6 +6,7 @@ use Doctrine\Common\Cache\ArrayCache;
 use EmanueleMinotto\TwigCacheBundle\DependencyInjection\TwigCacheExtension;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
 use Symfony\Component\DependencyInjection\Definition;
+use Twig\Extension\ExtensionInterface;
 
 class TwigCacheExtensionTest extends AbstractExtensionTestCase
 {
