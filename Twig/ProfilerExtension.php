@@ -91,7 +91,7 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
     {
         $this->generateKey[] = [
             'annotation' => $annotation,
-            'value'      => $value,
+            'value' => $value,
         ];
     }
 
@@ -103,9 +103,9 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
     public function getData()
     {
         return [
-            'fetchBlock'    => $this->fetchBlock,
-            'generateKey'   => $this->generateKey,
-            'hits'          => $this->hits,
+            'fetchBlock' => $this->fetchBlock,
+            'generateKey' => $this->generateKey,
+            'hits' => $this->hits,
             'strategyClass' => $this->strategyClass,
         ];
     }
@@ -113,9 +113,9 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
     /**
      * String representation of object.
      *
-     * @link http://php.net/manual/en/serializable.serialize.php
+     * @see http://php.net/manual/en/serializable.serialize.php
      *
-     * @return string The string representation of the object or null.
+     * @return string the string representation of the object or null
      */
     public function serialize()
     {
@@ -125,9 +125,9 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
     /**
      * Constructs the object.
      *
-     * @link http://php.net/manual/en/serializable.unserialize.php
+     * @see http://php.net/manual/en/serializable.unserialize.php
      *
-     * @param string $serialized The string representation of the object.
+     * @param string $serialized the string representation of the object
      */
     public function unserialize($serialized)
     {
@@ -142,7 +142,7 @@ class ProfilerExtension extends Asm89_Extension implements DataCollectorInterfac
     }
 
     /**
-     * Reset profiler data
+     * Reset profiler data.
      */
     public function reset()
     {

@@ -12,19 +12,17 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 /**
  * This is the class that loads and manages your bundle configuration.
  *
- * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
+ * @see http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
 class TwigCacheExtension extends Extension
 {
     /**
      * Loads a specific configuration.
      *
-     * @param array            $config    An array of configuration values.
-     * @param ContainerBuilder $container A ContainerBuilder instance.
+     * @param array            $config    an array of configuration values
+     * @param ContainerBuilder $container a ContainerBuilder instance
      *
-     * @throws \InvalidArgumentException If tag is not defined.
-     *
-     * @return void
+     * @throws \InvalidArgumentException if tag is not defined
      */
     public function load(array $config, ContainerBuilder $container)
     {
@@ -48,7 +46,7 @@ class TwigCacheExtension extends Extension
             $container->setParameter('twig_cache.extension.class', ProfilerExtension::class);
 
             $container->getDefinition('twig_cache.extension')->addTag('data_collector', [
-                'id'       => 'asm89_cache',
+                'id' => 'asm89_cache',
                 'template' => 'TwigCacheBundle:Collector:asm89_cache',
             ]);
         }
