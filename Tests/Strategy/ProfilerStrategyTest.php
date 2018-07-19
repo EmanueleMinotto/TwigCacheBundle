@@ -3,8 +3,8 @@
 namespace EmanueleMinotto\TwigCacheBundle\Tests\Strategy;
 
 use Asm89\Twig\CacheExtension\CacheStrategyInterface;
+use EmanueleMinotto\TwigCacheBundle\DataCollector\TwigCacheCollector;
 use EmanueleMinotto\TwigCacheBundle\Strategy\ProfilerStrategy;
-use EmanueleMinotto\TwigCacheBundle\Twig\ProfilerExtension;
 use PHPUnit_Framework_TestCase;
 
 class ProfilerStrategyTest extends PHPUnit_Framework_TestCase
@@ -20,9 +20,9 @@ class ProfilerStrategyTest extends PHPUnit_Framework_TestCase
     private $cacheStrategy;
 
     /**
-     * @var ProfilerExtension
+     * @var TwigCacheCollector
      */
-    private $profilerExtension;
+    private $dataCollector;
 
     /**
      * {@inheritdoc}
@@ -34,14 +34,14 @@ class ProfilerStrategyTest extends PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->profilerExtension = $this
-            ->getMockBuilder(ProfilerExtension::class)
+        $this->dataCollector = $this
+            ->getMockBuilder(TwigCacheCollector::class)
             ->disableOriginalConstructor()
             ->getMock();
 
         $this->object = new ProfilerStrategy(
             $this->cacheStrategy,
-            $this->profilerExtension
+            $this->dataCollector
         );
     }
 
@@ -58,7 +58,7 @@ class ProfilerStrategyTest extends PHPUnit_Framework_TestCase
                 return $output;
             }));
 
-        $this->profilerExtension
+        $this->dataCollector
             ->method('addFetchBlock')
             ->will($this->returnCallback(function ($a, $b) use ($key, $output) {
                 $this->assertSame($key, $a);
@@ -73,7 +73,7 @@ class ProfilerStrategyTest extends PHPUnit_Framework_TestCase
         $annotation = sha1(rand());
         $value = sha1(rand());
 
-        $this->profilerExtension
+        $this->dataCollector
             ->method('addGenerateKey')
             ->will($this->returnCallback(function ($a, $b) use ($annotation, $value) {
                 $this->assertSame($annotation, $a);
