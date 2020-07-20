@@ -7,7 +7,7 @@ Twig cache extension Bundle
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/EmanueleMinotto/TwigCacheBundle.svg?style=flat)](https://scrutinizer-ci.com/g/EmanueleMinotto/TwigCacheBundle/)
 [![Total Downloads](https://img.shields.io/packagist/dt/emanueleminotto/twig-cache-bundle.svg?style=flat)](https://packagist.org/packages/emanueleminotto/twig-cache-bundle)
 
-Symfony Bundle for [asm89/twig-cache-extension](https://github.com/asm89/twig-cache-extension).
+Symfony Bundle for [twigphp/twig-cache-extension](https://github.com/twigphp/twig-cache-extension).
 
 API: [emanueleminotto.github.io/TwigCacheBundle](http://emanueleminotto.github.io/TwigCacheBundle/)
 
@@ -66,7 +66,7 @@ to the `PsrCacheAdapter` that is provided with the extension.
 
 ```yml
 # parameters.yml
-twig_cache.adapter.class: Asm89\Twig\CacheExtension\CacheProvider\PsrCacheAdapter
+twig_cache.adapter.class: Twig\CacheExtension\CacheProvider\PsrCacheAdapter
 ```
 
 After that, you should install a package that provides a `psr/cache-implementation`. A wide

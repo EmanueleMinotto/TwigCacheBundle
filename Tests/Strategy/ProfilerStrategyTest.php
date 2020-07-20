@@ -2,7 +2,7 @@
 
 namespace EmanueleMinotto\TwigCacheBundle\Tests\Strategy;
 
-use Asm89\Twig\CacheExtension\CacheStrategyInterface;
+use Twig\CacheExtension\CacheStrategyInterface;
 use EmanueleMinotto\TwigCacheBundle\DataCollector\TwigCacheCollector;
 use EmanueleMinotto\TwigCacheBundle\Strategy\ProfilerStrategy;
 use PHPUnit_Framework_TestCase;
