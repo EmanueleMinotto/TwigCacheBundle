@@ -20,6 +20,7 @@ env:
     secure: UVvBxNf6tsDjCT6NFADBEpSH2Oeh5ikTh+RugVuW+gMhnF6cnapSO9YJE5RpVu8RjIPZInDiEyrFjufHvbLEdr/Zj9AMHJruDpKjxkIV9dnOre6z3pAF15DPTp5prD6xaJVyHHkLiFufR2E3QTVFSiwJNC9/LAmE8D5CIa6+RSs=
 
 before_install:
+  - echo "memory_limit=2G" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - phpenv config-rm xdebug.ini
   - composer self-update
   - 'if [[ -n "$GH_TOKEN" ]]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;'
