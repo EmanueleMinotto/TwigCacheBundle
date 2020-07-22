@@ -30,5 +30,5 @@ and use it in the ``twig_cache`` configuration
         strategy: acme.twig.strategy.custom
 
 
-.. _`Setup section`: https://github.com/asm89/twig-cache-extension#setup-2
-.. _`Implementing a cache strategy`: https://github.com/asm89/twig-cache-extension#implementing-a-cache-strategy
+.. _`Setup section`: https://github.com/twigphp/twig-cache-extension#setup-2
+.. _`Implementing a cache strategy`: https://github.com/twigphp/twig-cache-extension#implementing-a-cache-strategy

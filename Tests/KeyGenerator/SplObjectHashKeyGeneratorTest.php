@@ -2,7 +2,7 @@
 
 namespace EmanueleMinotto\TwigCacheBundle\Tests\KeyGenerator;
 
-use Asm89\Twig\CacheExtension\CacheStrategy\KeyGeneratorInterface;
+use Twig\CacheExtension\CacheStrategy\KeyGeneratorInterface;
 use EmanueleMinotto\TwigCacheBundle\KeyGenerator\SplObjectHashKeyGenerator;
 use PHPUnit_Framework_TestCase;
 use stdClass;

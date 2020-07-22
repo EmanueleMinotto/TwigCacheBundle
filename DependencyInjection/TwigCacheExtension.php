@@ -46,8 +46,8 @@ class TwigCacheExtension extends Extension
         if ($config['profiler']) {
             $dataCollectorDefinition = new Definition(TwigCacheCollector::class);
             $dataCollectorDefinition->addTag('data_collector', [
-                'id' => 'asm89_cache',
-                'template' => 'TwigCacheBundle:Collector:asm89_cache',
+                'id' => 'twig_cache',
+                'template' => 'TwigCacheBundle:Collector:twig_cache',
             ]);
             $container->setDefinition(TwigCacheCollector::class, $dataCollectorDefinition);
 
