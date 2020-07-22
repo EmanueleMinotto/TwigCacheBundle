@@ -13,7 +13,6 @@ php:
   - 7.1
   - 7.2
   - 7.3
-  - 7.4
 
 env:
   global:
@@ -26,7 +25,7 @@ before_install:
 
 install:
   - composer require satooshi/php-coveralls:~0.6@stable --no-update
-  - composer install --prefer-dist --no-interaction --no-progress
+  - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer install --prefer-dist --no-interaction --no-progress
 
 script:
   - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
