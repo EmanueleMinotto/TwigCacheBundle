@@ -56,7 +56,7 @@ class TwigCacheExtension extends Extension
                 new Reference(TwigCacheCollector::class),
             ]);
 
-            $container->addDefinitions([$strategy]);
+            $container->addDefinitions(['twig_cache.profiler' => $strategy]);
         }
 
         $container->getDefinition('twig_cache.extension')->replaceArgument(0, $strategy);
