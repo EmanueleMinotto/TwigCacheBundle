@@ -44,7 +44,7 @@ class TwigCacheCollector implements DataCollectorInterface
      */
     public function getName()
     {
-        return 'asm89_cache';
+        return 'twig_cache';
     }
 
     /**

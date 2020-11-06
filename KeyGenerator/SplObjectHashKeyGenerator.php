@@ -2,12 +2,12 @@
 
 namespace EmanueleMinotto\TwigCacheBundle\KeyGenerator;
 
-use Asm89\Twig\CacheExtension\CacheStrategy\KeyGeneratorInterface;
+use Twig\CacheExtension\CacheStrategy\KeyGeneratorInterface;
 
 /**
  * Key generator based on spl_object_hash.
  *
- * @see https://github.com/asm89/twig-cache-extension#setup-1
+ * @see https://github.com/twigphp/twig-cache-extension#setup-1
  */
 class SplObjectHashKeyGenerator implements KeyGeneratorInterface
 {

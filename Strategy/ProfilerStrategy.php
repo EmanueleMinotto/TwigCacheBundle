@@ -2,7 +2,7 @@
 
 namespace EmanueleMinotto\TwigCacheBundle\Strategy;
 
-use Asm89\Twig\CacheExtension\CacheStrategyInterface;
+use Twig\CacheExtension\CacheStrategyInterface;
 use EmanueleMinotto\TwigCacheBundle\DataCollector\TwigCacheCollector;
 
 /**

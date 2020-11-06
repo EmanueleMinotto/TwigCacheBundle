@@ -46,8 +46,8 @@ class TwigCacheExtension extends Extension
         if ($config['profiler']) {
             $dataCollectorDefinition = new Definition(TwigCacheCollector::class);
             $dataCollectorDefinition->addTag('data_collector', [
-                'id' => 'asm89_cache',
-                'template' => 'TwigCacheBundle:Collector:asm89_cache',
+                'id' => 'twig_cache',
+                'template' => '@TwigCache/Collector/twig_cache',
             ]);
             $container->setDefinition(TwigCacheCollector::class, $dataCollectorDefinition);
 
@@ -56,7 +56,7 @@ class TwigCacheExtension extends Extension
                 new Reference(TwigCacheCollector::class),
             ]);
 
-            $container->addDefinitions([$strategy]);
+            $container->addDefinitions(['twig_cache.profiler' => $strategy]);
         }
 
         $container->getDefinition('twig_cache.extension')->replaceArgument(0, $strategy);

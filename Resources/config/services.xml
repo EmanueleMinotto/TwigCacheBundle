@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="twig_cache.adapter.class">Asm89\Twig\CacheExtension\CacheProvider\DoctrineCacheAdapter</parameter>
-        <parameter key="twig_cache.extension.class">Asm89\Twig\CacheExtension\Extension</parameter>
-        <parameter key="twig_cache.strategy.class">Asm89\Twig\CacheExtension\CacheStrategy\IndexedChainingCacheStrategy</parameter>
-        <parameter key="twig_cache.strategy.generational.class">Asm89\Twig\CacheExtension\CacheStrategy\GenerationalCacheStrategy</parameter>
-        <parameter key="twig_cache.strategy.lifetime.class">Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy</parameter>
+        <parameter key="twig_cache.adapter.class">Twig\CacheExtension\CacheProvider\DoctrineCacheAdapter</parameter>
+        <parameter key="twig_cache.extension.class">Twig\CacheExtension\Extension</parameter>
+        <parameter key="twig_cache.strategy.class">Twig\CacheExtension\CacheStrategy\IndexedChainingCacheStrategy</parameter>
+        <parameter key="twig_cache.strategy.generational.class">Twig\CacheExtension\CacheStrategy\GenerationalCacheStrategy</parameter>
+        <parameter key="twig_cache.strategy.lifetime.class">Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy</parameter>
         <parameter key="twig_cache.strategy.spl_object_hash_key_generator.class">EmanueleMinotto\TwigCacheBundle\KeyGenerator\SplObjectHashKeyGenerator</parameter>
     </parameters>
     <services>
