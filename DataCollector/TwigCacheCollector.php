@@ -34,7 +34,7 @@ class TwigCacheCollector implements DataCollectorInterface
      */
     private $hits = 0;
 
-    public function collect(Request $request, Response $response, \Exception $exception = null)
+    public function collect(Request $request, Response $response, \Throwable $exception = null)
     {
         // nothing to do here
     }
