@@ -28,24 +28,16 @@ of the Composer documentation.
 Add Bundle to AppKernel
 -----------------------
 
-Then, enable the bundle by adding the following line in the `app/AppKernel.php`
+Then, enable the bundle by adding the following line in the `bundles.php`
 file of your project:
 
 ```php
-// app/AppKernel.php
-
-// ...
-class AppKernel extends Kernel
-{
-    public function registerBundles()
-    {
-        $bundles = array(
-            // ...
-
-            new EmanueleMinotto\TwigCacheBundle\TwigCacheBundle(),
-        );
-    }
-}
+// bundles.php
+return [
+    // ...
+    EmanueleMinotto\TwigCacheBundle\TwigCacheBundle::class => ['all' => true],
+    // ...
+];
 ```
 
 Configure services
