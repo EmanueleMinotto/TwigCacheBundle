@@ -2,12 +2,12 @@
 
 namespace EmanueleMinotto\TwigCacheBundle\Tests\KeyGenerator;
 
+use PHPUnit\Framework\TestCase;
 use Twig\CacheExtension\CacheStrategy\KeyGeneratorInterface;
 use EmanueleMinotto\TwigCacheBundle\KeyGenerator\SplObjectHashKeyGenerator;
-use PHPUnit_Framework_TestCase;
 use stdClass;
 
-class SplObjectHashKeyGeneratorTest extends PHPUnit_Framework_TestCase
+class SplObjectHashKeyGeneratorTest extends TestCase
 {
     public function testGenerateKeySingle()
     {

@@ -8,11 +8,10 @@ cache:
     - $HOME/.composer/cache
 
 php:
-  - 5.6
-  - 7.0
   - 7.1
   - 7.2
   - 7.3
+  - 8.0
 
 env:
   global:
@@ -24,7 +23,7 @@ before_install:
   - 'if [[ -n "$GH_TOKEN" ]]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;'
 
 install:
-  - composer require satooshi/php-coveralls:~0.6@stable --no-update
+  - composer require php-coveralls/php-coveralls --no-update
   - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer install --prefer-dist --no-interaction --no-progress
 
 script:
@@ -32,7 +31,7 @@ script:
 
 after_script:
   - php vendor/bin/coveralls -v
-  - 'if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" && $TRAVIS_PHP_VERSION == "5.6" ]]; then sh generate-api.sh; fi;'
+  - 'if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" && $TRAVIS_PHP_VERSION == "7.1" ]]; then sh generate-api.sh; fi;'
 
 notifications:
   email: false
