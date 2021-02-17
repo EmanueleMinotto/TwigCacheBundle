@@ -10,6 +10,7 @@ cache:
 php:
   - 7.2
   - 7.3
+  - 7.4
   - 8.0
 
 env:
@@ -30,7 +31,7 @@ script:
 
 after_script:
   - php vendor/bin/coveralls -v
-  - 'if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" && $TRAVIS_PHP_VERSION == "7.1" ]]; then sh generate-api.sh; fi;'
+  - 'if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" && $TRAVIS_PHP_VERSION == "7.4" ]]; then sh generate-api.sh; fi;'
 
 notifications:
   email: false
