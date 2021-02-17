@@ -16,14 +16,14 @@ class TwigCacheExtensionTest extends AbstractExtensionTestCase
      *
      * @return ExtensionInterface[]
      */
-    protected function getContainerExtensions()
+    protected function getContainerExtensions(): array
     {
         return [
             new TwigCacheExtension(),
         ];
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

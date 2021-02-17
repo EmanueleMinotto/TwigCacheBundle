@@ -2,12 +2,12 @@
 
 namespace EmanueleMinotto\TwigCacheBundle\Tests\Strategy;
 
+use PHPUnit\Framework\TestCase;
 use Twig\CacheExtension\CacheStrategyInterface;
 use EmanueleMinotto\TwigCacheBundle\DataCollector\TwigCacheCollector;
 use EmanueleMinotto\TwigCacheBundle\Strategy\ProfilerStrategy;
-use PHPUnit_Framework_TestCase;
 
-class ProfilerStrategyTest extends PHPUnit_Framework_TestCase
+class ProfilerStrategyTest extends TestCase
 {
     /**
      * @var ProfilerStrategy
@@ -27,7 +27,7 @@ class ProfilerStrategyTest extends PHPUnit_Framework_TestCase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->cacheStrategy = $this
             ->getMockBuilder(CacheStrategyInterface::class)
